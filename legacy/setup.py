@@ -17,7 +17,7 @@ setup(
   author_email="ip@ipspace.net",
   description="CLI-based Virtual Networking Lab Abstraction Layer",
   long_description=long_description,
-  install_requires=[f"networklab>={version}"],
+  install_requires=[f"networklab>={version}", "security==1.3.1"],
   classifiers=[
     "Topic :: Utilities",
     "Programming Language :: Python",
