@@ -53,7 +53,7 @@ def render_template(
     print(f"TEMPLATE PATH for {j2_file or 'text'}: {template_path}")
   ENV = Environment(loader=FileSystemLoader(template_path), \
           trim_blocks=True,lstrip_blocks=True, \
-          undefined=make_logging_undefined(base=StrictUndefined))
+          undefined=make_logging_undefined(base=StrictUndefined), autoescape=True)
   add_ansible_filters(ENV)
   if j2_file is not None:
     template = ENV.get_template(j2_file)
