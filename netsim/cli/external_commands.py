@@ -10,6 +10,7 @@ from box import Box
 from . import is_dry_run,lab_status_log
 from ..utils import strings,log
 from ..data import global_vars
+from security import safe_command
 
 def print_step(n: int, txt: str, spacing: typing.Optional[bool] = False) -> None:
   if spacing:
@@ -95,7 +96,7 @@ def run_command(
     return True
 
   try:
-    result = subprocess.run(cmd,capture_output=check_result,check=not return_exitcode,text=True)
+    result = safe_command.run(subprocess.run, cmd,capture_output=check_result,check=not return_exitcode,text=True)
     if log.debug_active('external') or log.VERBOSE >= 3:
       print(f'... run result: {result}')
     if return_exitcode:
